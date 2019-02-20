@@ -3,7 +3,7 @@ HEIGHT = 99
 
 do = [Actor('do_0'),Actor('la_0')]
 do_diese = Actor('do_diese_1')
-sound = [str('eep'),str('eep')]
+notes = [sounds.do,sounds.re]
 
 def draw():
     screen.fill((254,254,254))
@@ -15,5 +15,4 @@ def on_mouse_down(pos):
     for valeur in range(2):
         if do[valeur].collidepoint(pos):
             print("touché")
-            str truc = sound[valeur]
-            sounds.truc.play()
+            notes[valeur].play()
