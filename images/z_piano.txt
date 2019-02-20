@@ -1,0 +1,2 @@
+taille touche : 35 x 99
+taille diese : 12 x 49
