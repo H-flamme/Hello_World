@@ -9,6 +9,9 @@ Actor('do_4'),Actor('la_0'),Actor('mi_0'),Actor('fa_0'),Actor('la_0'),Actor('la_
 Actor('la_0'),Actor('mi_0'),Actor('fa_0')]
 do_diese = []
 do_diese1 = Actor('do_diese_1')
+toucheEnfonce = Actor('touche_enfonce')
+
+
 
 notes = [sounds.a_1,sounds.a_2,sounds.a_3,sounds.a_4,sounds.a_5,sounds.a_6,sounds.a_7,
 sounds.b_1,sounds.b_2,sounds.b_3,sounds.b_4,sounds.b_5,sounds.b_6,sounds.b_7,
