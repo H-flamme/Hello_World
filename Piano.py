@@ -1,5 +1,13 @@
+import time
+
 WIDTH = 735
 HEIGHT = 99
+
+do_grave = [0,1,2,3,4,5,6]
+do_peu_grave = [7,8,9,10,11,12,13]
+do_normal = [14,15,16,17,18,19,20]
+do_peu_aigu = [21,22,23,24,25,26,27]
+do_aigu = [28,29,30,31,32,33,34]
 
 do0 = [Actor('do_0'),Actor('la_0'),Actor('mi_0'),Actor('fa_0'),Actor('la_0'),Actor('la_0'),Actor('mi_0'),
 Actor('do_1'),Actor('la_0'),Actor('mi_0'),Actor('fa_0'),Actor('la_0'),Actor('la_0'),Actor('mi_0'),
@@ -7,11 +15,10 @@ Actor('do_2'),Actor('la_0'),Actor('mi_0'),Actor('fa_0'),Actor('la_0'),Actor('la_
 Actor('do_3'),Actor('la_0'),Actor('mi_0'),Actor('fa_0'),Actor('la_0'),Actor('la_0'),Actor('mi_0'),
 Actor('do_4'),Actor('la_0'),Actor('mi_0'),Actor('fa_0'),Actor('la_0'),Actor('la_0'),Actor('mi_0'),
 Actor('la_0'),Actor('mi_0'),Actor('fa_0')]
+
 do_diese = []
 do_diese1 = Actor('do_diese_1')
 toucheEnfonce = Actor('touche_enfonce')
-
-
 
 notes = [sounds.a_1,sounds.a_2,sounds.a_3,sounds.a_4,sounds.a_5,sounds.a_6,sounds.a_7,
 sounds.b_1,sounds.b_2,sounds.b_3,sounds.b_4,sounds.b_5,sounds.b_6,sounds.b_7,
@@ -53,3 +60,38 @@ def on_mouse_down(pos):
         for valeur in range(35):
             if do0[valeur].collidepoint(pos):
                 notes[valeur].play()
+toucheEncoreEnfonce = []
+
+placement = 2
+def on_key_down(key):
+    global placement
+    do_touche_num = [key.K_1,key.K_2,key.K_3,key.K_4,key.K_5]
+    do_touche = [key.S,key.D,key.F,key.G,key.H,key.J,key.K]
+    global toucheEncoreEnfonce
+    for valeur in range(5):
+        if keyboard[do_touche_num[valeur]]:
+            placement = valeur
+            break
+    for valeur in range(7):
+        if keyboard[do_touche[valeur]] and detectKey(do_touche[valeur]):
+            print(do_touche[valeur])
+            notes[valeur + placement * 7].play()
+            break
+    toucheEncoreEnfonce.append(key)
+
+def on_key_up(key):
+    global toucheEncoreEnfonce
+    toucheEncoreEnfonce.remove(key)
+
+def detectKey(value):
+    global toucheEncoreEnfonce
+    if (toucheEncoreEnfonce == []):
+        return True
+    else:
+        for elt in toucheEncoreEnfonce:
+            if(elt == value):
+                return False
+        return True
+
+
+
