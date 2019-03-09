@@ -1,4 +1,5 @@
 import time
+import pgzrun
 
 WIDTH = 735
 HEIGHT = 99
@@ -19,6 +20,12 @@ Actor('la_0'),Actor('mi_0'),Actor('fa_0')]
 do_diese = []
 do_diese1 = Actor('do_diese_1')
 toucheEnfonce = Actor('touche_enfonce')
+
+notes_music = ['c2','d2','e2','f2','g2','a2','b2',
+               'c3','d3','e3','f3','g3','a3','b3',
+               'c4','d4','e4','f4','g4','a4','b4',
+               'c5','d5','e5','f5','g5','a5','b5',
+               'c6','d6','e6','f6','g6','a6','b6']
 
 notes = [sounds.a_1,sounds.a_2,sounds.a_3,sounds.a_4,sounds.a_5,sounds.a_6,sounds.a_7,
 sounds.b_1,sounds.b_2,sounds.b_3,sounds.b_4,sounds.b_5,sounds.b_6,sounds.b_7,
@@ -74,13 +81,13 @@ def on_key_down(key):
             break
     for valeur in range(7):
         if keyboard[do_touche[valeur]] and detectKey(do_touche[valeur]):
-            print(do_touche[valeur])
-            notes[valeur + placement * 7].play()
+            music.play_once(notes_music[valeur + placement * 7])
             break
     toucheEncoreEnfonce.append(key)
 
 def on_key_up(key):
     global toucheEncoreEnfonce
+    
     toucheEncoreEnfonce.remove(key)
 
 def detectKey(value):
@@ -93,5 +100,5 @@ def detectKey(value):
                 return False
         return True
 
-
+pgzrun.go()
 
